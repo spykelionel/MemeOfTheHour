@@ -24,8 +24,8 @@ def post_meme_to_telex():
     meme_url = fetch_meme()
     if meme_url:
         payload = {
-            "event_name": "string",
-            "message": f"😂 Hourly Meme: {meme_url}",
+            "event_name": "😂 Hourly Meme: ",
+            "message": meme_url,
             "status": "success",
             "username": "💀meme-bot",
             }
