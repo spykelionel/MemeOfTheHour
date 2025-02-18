@@ -1,8 +1,12 @@
 from fastapi import FastAPI
 import requests
 from apscheduler.schedulers.background import BackgroundScheduler
+from dotenv import load_dotenv
+import os
 
 app = FastAPI()
+load_dotenv()
+TELEX_API_URL = os.getenv("TELEX_URL")
 
 # Function to fetch a meme from Reddit
 def fetch_meme():
@@ -19,13 +23,20 @@ def fetch_meme():
 def post_meme_to_telex():
     meme_url = fetch_meme()
     if meme_url:
-        telex_api_url = "https://api.telex.im/v1/messages"
-        headers = {"Authorization": "Bearer YOUR_TELEX_API_KEY"}
-        data = {
-            "channel_id": "meme-channel",
-            "text": f"🕒 Hourly Meme: {meme_url}"
-        }
-        requests.post(telex_api_url, headers=headers, json=data)
+        payload = {
+            "event_name": "string",
+            "message": f"😂 Hourly Meme: {meme_url}",
+            "status": "success",
+            "username": "💀meme-bot",
+            }
+
+        headers={
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+            }
+        
+        response = requests.post(TELEX_API_URL, headers=headers, json=payload)
+        print(response.json())
 
 # Schedule meme posting every hour
 scheduler = BackgroundScheduler()
