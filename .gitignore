@@ -1,0 +1,33 @@
+# Virtual environment
+venv/
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+
+# Dependency directories
+*.egg-info/
+dist/
+build/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# macOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
