@@ -6,7 +6,7 @@ app = FastAPI()
 
 # Function to fetch a meme from Reddit
 def fetch_meme():
-    url = "https://www.reddit.com/r/memes/top.json?limit=1"
+    url = "https://www.reddit.com/r/memes/new.json?limit=1"
     headers = {"User-Agent": "MemeOfTheHour/1.0"}
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
