@@ -56,6 +56,8 @@ def get_meme():
         return {"meme_url": meme_url}
     return {"error": "Failed to fetch meme"}
 
+
+port = int(os.getenv("PORT", 8000)) 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=port)
