@@ -25,7 +25,7 @@ def post_meme_to_telex():
     if meme_url:
         payload = {
             "event_name": "😂 Hourly Meme: ",
-            "message": meme_url,
+            "message": f"😂{meme_url}",
             "status": "success",
             "username": "💀meme-bot",
             }
@@ -40,7 +40,7 @@ def post_meme_to_telex():
 
 # Schedule meme posting every hour
 scheduler = BackgroundScheduler()
-scheduler.add_job(post_meme_to_telex, 'interval', hours=1)
+scheduler.add_job(post_meme_to_telex, 'interval', minutes=1)
 scheduler.start()
 
 # Root endpoint
